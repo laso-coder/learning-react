@@ -1,11 +1,1 @@
-{
-    "events": [
-      {
-        "id": "e1",
-        "title": "A dummy event",
-        "date": "2023-02-22",
-        "image": "https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg",
-        "description": "Join this amazing event and connect with fellow developers."
-      }
-    ]
-  }
+{"events":[{"title":"Adarsha lunia","image":"https://qph.cf2.quoracdn.net/main-qimg-ca27f30bd36135aef5cd3dfaaa3d81c7","date":"2023-04-12","description":"Quora","id":"a73936e1-bcac-4f0d-8530-0f8faa2ae9fd"},{"title":"Some girl","image":"https://images.pexels.com/photos/3394225/pexels-photo-3394225.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","date":"2023-03-28","description":"Eventfdgdfg","id":"17c83f9a-75e8-4d15-9211-f19ac257ef40"},{"id":"e1","title":"AWS","date":"2023-02-22","image":"https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg","description":"Join this amazing event and connect with fellow developers."},{"id":"e2","title":"Azure Cloud","date":"2023-02-22","image":"https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg","description":"Join this amazing event and connect with fellow developers."}]}
