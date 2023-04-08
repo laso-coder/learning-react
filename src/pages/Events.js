@@ -28,7 +28,7 @@ async function loadEvents() {
     throw json(
       { message: 'Could not fetch events.' },
       {
-        status: 500,
+        status: response.status,
       }
     );
   } else {

@@ -8,13 +8,15 @@ import {
 } from "react-router-dom";
 
 import classes from "./EventForm.module.css";
+import { getAuthToken } from "../pages/util/auth";
 
 function EventForm({ method, event }) {
+
+  console.log("EventForm execute here")
+  
   const navigate = useNavigate();
   const data = useActionData();
   const navigation = useNavigation();
-
-  console.log("Sending HTTP Method :: %s",method)
 
   const isSubmitting = navigation.state === "submitting";
   function cancelHandler() {
@@ -85,10 +87,11 @@ function EventForm({ method, event }) {
 export default EventForm;
 
 export async function action({ request, params }) {
+
+  console.log("EventForm action execute here")
+
   const method = request.method;
   const data = await request.formData();
-
-  console.log("Received method is %s.. ",method)
 
   const eventData = {
     title: data.get("title"),
@@ -97,27 +100,37 @@ export async function action({ request, params }) {
     description: data.get("description"),
   };
 
+  console.log("Form Data is %o And HTTP Method is : %s", eventData, method);
+
   let url = "http://localhost:8080/events";
 
   if (method === "PATCH") {
+    console.log(" Executing Patch here...");
     const eventId = params.eventId;
     url = "http://localhost:8080/events/" + eventId;
   }
-
-  const response = await fetch(url, {
-    method: method,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(eventData),
-  });
+  const token = getAuthToken();
+  const response = await fetch(
+    url,
+    {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(eventData),
+    }
+  );
 
   if (response.status === 422) {
     return response;
   }
 
   if (!response.ok) {
-    throw json({ message: "Could not save event." }, { status: 500 });
+    throw json(
+      { message: "Could not save event." },
+      { status: response.status }
+    );
   }
 
   return redirect("/events");

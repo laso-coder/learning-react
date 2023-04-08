@@ -2,14 +2,17 @@ import MainNavigation from "../components/MainNavigation";
 import PageContent from "../components/PageContent";
 import { useRouteError } from "react-router-dom";
 
-function Error() {
+function ErrorPage() {
   const error = useRouteError();
+
+  console.log(error);
 
   let title = "An error occurred!";
   let message = "Something went wrong!";
 
   if (error.status === 500) {
-    message = JSON.parse(error.data).message;
+    //message = JSON.parse(error.data).message;
+    message = error.data.message;
   }
 
   if (error.status === 404) {
@@ -27,4 +30,4 @@ function Error() {
   );
 }
 
-export default Error;
+export default ErrorPage;
