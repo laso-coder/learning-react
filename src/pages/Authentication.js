@@ -46,16 +46,13 @@ export async function action({ request }) {
   const resData = await response.json();
   const token = resData.token;
 
-  
-  
-  console.log("token is %o", resData);
+  let expiration = new Date();
+  expiration.setHours(expiration.getHours() + 1);
+  let expTime = new Date(expiration.toISOString());
 
   localStorage.setItem("token", token);
-  const expiration = new Date();
-  expiration.setHours(expiration.getHours() + 1);
-  let expTime=expiration.toISOString()
-  var d = new Date(expTime);
-  localStorage.setItem("expiration",d.toLocaleString('en-GB'));
+  localStorage.setItem("user", data.get("email"));
+  localStorage.setItem("expiration", expTime.toLocaleString("en-GB"));
 
   return redirect("/");
 }
