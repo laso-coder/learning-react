@@ -1,4 +1,3 @@
-import { lazy, Suspense } from "react";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import EditEvent from "./pages/EditEvent";
@@ -19,10 +18,11 @@ import AuthenticationPage, {
 } from "./pages/Authentication";
 import { action as logoutAction } from "./pages/Logout";
 import { tokenLoader, checkAuthLoader } from "./pages/util/auth";
+import { loader as blogLoader } from "./pages/BlogPage";
+import { loader as postLoader } from "./pages/Post";
 
-const BlogPage = lazy(() => import("./pages/BlogPage"));
-const PostPage = lazy(() => import("./pages/Post"));
-
+import BlogPage from "./pages/BlogPage";
+import PostPage from "./pages/Post";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,23 +42,13 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: (
-              <Suspense fallback={<p>loading..</p>}>
-                <BlogPage />
-              </Suspense>
-            ),
-            loader: () =>
-              import("./pages/BlogPage").then((module) => module.loader()),
+            element: <BlogPage />,
+            loader: blogLoader,
           },
           {
             path: ":id",
-            element: (
-              <Suspense fallback={<p>loading..</p>}>
-                <PostPage />
-              </Suspense>
-            ),
-            loader: (meta) =>
-              import("./pages/Post").then((module) => module.loader(meta)),
+            element: <PostPage />,
+            loader: postLoader,
           },
         ],
       },

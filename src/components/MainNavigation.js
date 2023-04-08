@@ -40,6 +40,16 @@ function MainNavigation() {
               Newsletter
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/blog"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              Lazy Blog
+            </NavLink>
+          </li>
           {!token && (
             <li>
               <NavLink
