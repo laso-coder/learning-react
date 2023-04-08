@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import classes from "./EventsList.module.css";
+import "../App.css";
 
 function PostList({ posts }) {
   return (
-    <div className={classes.events}>
-      <ul className={classes.list}>
+    <div>
+      <ul className='blist'>
         {posts.map((p) => (
           <li key={p.id}>
             <Link to={p.id.toString()}>{p.title} </Link>

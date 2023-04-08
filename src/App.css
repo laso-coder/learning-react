@@ -31,3 +31,26 @@ main {
   margin: 2rem auto;
   text-align: center;
 }
+
+.blist{
+  margin: 2rem auto;
+  max-width: 40rem;
+}
+
+.blist a{
+  text-transform: capitalize;
+  display: block;
+  margin: 1rem 0;
+  padding: 1rem;
+  box-shadow: 0 1px 4px rgb(227, 146, 26);
+  background-color: var(--color-gray-300);
+  color: var(--color-gray-800);
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.blist a:hover{
+  background-color: var(--color-primary-500);
+  color: var(--color-gray-800);
+  text-decoration: wavy
+}
