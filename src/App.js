@@ -1,11 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import Parent from './Parent';
+import FormV1 from './FormV1';
+import FormV2 from './FormV2';
 
 function App() {
   return (
     <div className="App">
-     <Parent></Parent>
+     <FormV1></FormV1>
+     <FormV2></FormV2>
     </div>
   );
 }
